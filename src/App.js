@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Form from './components/Form'
 import Orders from './components/Orders'
 import logo from './images/pizza.jpg';
+import axios from 'axios'
 
 let pizzaOrder = [
   {
@@ -72,15 +73,18 @@ const App = () => {
 
   let onSubmit = e => {
     e.preventDefault()
-
-    let addPizza = {
-      id: Date.now(),
-      name: formValues.name,
-      size: formValues.size === 'small' ? false : true,
-      toppings: Object.keys(formValues.toppings).filter(topping => formValues.toppings[topping] === true),
-      instructions: formValues.instructions,
-    }
-    setPizza([ ...pizza, addPizza ])
+    // let addPizza = {
+    //   id: Date.now(),
+    //   name: formValues.name,
+    //   size: formValues.size === 'small' ? false : true,
+    //   toppings: Object.keys(formValues.toppings).filter(topping => formValues.toppings[topping] === true),
+    //   instructions: formValues.instructions,
+    // }
+    // setPizza([ ...pizza, addPizza ])
+    axios.post('https://reqres.in/api/users', formValues )
+      .then(res => {
+        console.log(res)
+      })
     setFormValues(initialValues)
   }
 
