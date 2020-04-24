@@ -2,7 +2,11 @@ import React from 'react'
 
 function Orders(props){
     return (
-        <div>From inside Orders</div>
+        <>
+        <h2>Your Order(s)</h2>
+        {/* show all orders place from pizza array */}
+
+        </>
     )
 }
 
